@@ -8,10 +8,10 @@ using namespace std;
 
 //screen dimensions
 
-#define WIGHT 800
+#define WIDTH 800
 #define HEIGHT 600
 
-//wight and height of each character in pixels
+//widht and height of each character in pixels
 const int dW=4,dH=8;
 
 //set cursor at start to avoid flickering
@@ -172,7 +172,7 @@ int main()
 	
 	//starting screen
 	for(int i=0;i<HEIGHT/dH;i++){
-	for(int j=0;j<WIGHT/dW;j++){
+	for(int j=0;j<WIDTH/dW;j++){
 		printf("@");
 	}
 	printf("\n");
@@ -183,16 +183,16 @@ int main()
 	
 	while(1)
 	{
-		char platno[HEIGHT/dH][WIGHT/dW];
+		char platno[HEIGHT/dH][WIDTH/dW];
 		camera cam(r,alfa,beta);
 		
 		for(int i=0;i<HEIGHT/dH;i++){
-		for(int j=0;j<WIGHT/dW;j++){
+		for(int j=0;j<WIDTH/dW;j++){
 			platno[i][j]=0;
 		}}
 		
 		for(int i=0;i<HEIGHT/dH;i++){
-		for(int j=0;j<WIGHT/dW;j++){
+		for(int j=0;j<WIDTH/dW;j++){
 			double origin[3]=
 			{
 				cam.x,
@@ -202,8 +202,8 @@ int main()
 			
 			double unit[3]=
 			{
-				-((double)(j-WIGHT/dW/2)+0.5)/(double)(WIGHT/dW/2),
-				((double)(i-HEIGHT/dH/2)+0.5)/(double)(WIGHT/dH/2),
+				-((double)(j-WIDTH/dW/2)+0.5)/(double)(WIDTH/dW/2),
+				((double)(i-HEIGHT/dH/2)+0.5)/(double)(WIDTH/dH/2),
 				-1
 			};
 			transformVector(unit,cam.matrix);
@@ -218,7 +218,7 @@ int main()
 		
 		//display:
 		for(int i=0;i<HEIGHT/dH;i++){
-		for(int j=0;j<WIGHT/dW;j++){
+		for(int j=0;j<WIDTH/dW;j++){
 			printf("%c",platno[i][j]);
 		}
 		printf("\n");
