@@ -3,7 +3,7 @@
 #endif
 #include <iostream>
 #include <cstring>
-#include <unistd.h>
+//#include <unistd.h>
 #include "functions.h"
 #define PI 3.14159265358979323846
 using namespace std;
