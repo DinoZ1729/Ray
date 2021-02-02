@@ -186,16 +186,15 @@ int main()
 	getchar();
 	gotoxy(0,0);
 	
-	
+	char platno[HEIGHT/dH][WIDTH/dW];
+	for(int i=0;i<HEIGHT/dH;i++){
+	for(int j=0;j<WIDTH/dW;j++){
+		platno[i][j]=0;
+	}}
 	while(1)
 	{
-		char platno[HEIGHT/dH][WIDTH/dW];
-		camera cam(r,alfa,beta);
 		
-		for(int i=0;i<HEIGHT/dH;i++){
-		for(int j=0;j<WIDTH/dW;j++){
-			platno[i][j]=0;
-		}}
+		camera cam(r,alfa,beta);
 		
 		for(int i=0;i<HEIGHT/dH;i++){
 		for(int j=0;j<WIDTH/dW;j++){
