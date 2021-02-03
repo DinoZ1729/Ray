@@ -220,7 +220,7 @@ int main()
 		platno[p] = 0;
 		
 		//display:
-		//puts its very fast
+		//puts is very fast
 		puts(platno);
 
 		//sleeping to reduce frames count
