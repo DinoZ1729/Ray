@@ -225,6 +225,10 @@ int main()
 		//puts its very fast
 		puts(platno);
 
+		//sleeping to reduce frames count
+		//maybe there is a better way than sleeping to sync
+		Sleep(5);
+
 		//instead of system("cls") i used this because it looks smoother
 		gotoxy(0,0);
 		//update camera position
