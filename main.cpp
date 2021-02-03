@@ -28,8 +28,6 @@ void gotoxy ( short x, short y )
 }
 char palette[]=" .:;~=#OB8%&";
 
-char linebreak[] = "\n";
-
 typedef struct Ball{
 	double center[3];	
 	double radius;
