@@ -232,8 +232,9 @@ int main()
 		//instead of system("cls") i used this because it looks smoother
 		gotoxy(0,0);
 		//update camera position
-		alfa+=0.03*PI;
-		if(beta>PI/20)beta-=0.03*PI;
+		//using very small angle increments to get a smoother transition
+		alfa+=0.0003*PI;
+		if(beta>PI/2000)beta-=0.0003*PI;
 	}
 	return 0;
 }
