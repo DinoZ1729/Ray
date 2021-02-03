@@ -28,6 +28,7 @@ void gotoxy ( short x, short y )
 }
 char palette[]=" .:;~=#OB8%&";
 
+char linebreak[] = "\n";
 
 typedef struct Ball{
 	double center[3];	
@@ -150,8 +151,7 @@ public:
 };
 
 int main()
-{
-    
+{   
     //ball declaration::
     ball balls[3];
     balls[0].center[0]=0;
@@ -177,25 +177,22 @@ int main()
 	
 	
 	//starting screen
-	for(int i=0;i<HEIGHT/dH;i++){
+	for(int i=0;i<HEIGHT/dH-4;i++){
 	for(int j=0;j<WIDTH/dW;j++){
-		printf("@");
+		putchar('@');
 	}
-	printf("\n");
+	putchar('\n');
 	}
 	getchar();
 	gotoxy(0,0);
 	
-	char platno[HEIGHT/dH][WIDTH/dW];
-	for(int i=0;i<HEIGHT/dH;i++){
-	for(int j=0;j<WIDTH/dW;j++){
-		platno[i][j]=0;
-	}}
+	
 	while(1)
 	{
-		
+		char platno[HEIGHT/dH*(WIDTH/dW+1)+1];
 		camera cam(r,alfa,beta);
 		
+		int p = 0;
 		for(int i=0;i<HEIGHT/dH;i++){
 		for(int j=0;j<WIDTH/dW;j++){
 			double origin[3]=
@@ -218,17 +215,16 @@ int main()
 			normalize(unit);
 			double luminance=cam.rayTrace(origin,unit,balls,3,2,0.3,5);
 			int color=(int)((strlen(palette)-1)*luminance);
-			platno[i][j]=palette[color];
-		}}
+			platno[p++]=palette[color];
+		}
+		platno[p++] = '\n';
+		}
+		platno[p] = 0;
 		
 		//display:
-		for(int i=0;i<HEIGHT/dH;i++){
-		for(int j=0;j<WIDTH/dW;j++){
-			printf("%c",platno[i][j]);
-		}
-		printf("\n");
-		}
-		
+		//puts its very fast
+		puts(platno);
+
 		//instead of system("cls") i used this because it looks smoother
 		gotoxy(0,0);
 		//update camera position
