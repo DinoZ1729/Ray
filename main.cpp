@@ -179,6 +179,7 @@ int main() {
   
   char platno[HEIGHT / dH * (WIDTH / dW + 1) + 1];
 
+  std::chrono::nanoseconds lag(0ns);
   std::chrono::_V2::system_clock::time_point time_start;
 	std::chrono::_V2::system_clock::time_point time_end;
 
@@ -228,6 +229,12 @@ int main() {
 
 		//calculating the time passed to update the frame
 		time_end = std::chrono::high_resolution_clock::now();
+    lag = std::chrono::duration_cast<std::chrono::nanoseconds>(time_start - time_end);
+
+    //sleeping for the remaning time to get a constant refresh rate
+    if (lag < timestep) {
+      auto sleep_duration = (timestep - lag);
+    }
   }
   return 0;
 }
