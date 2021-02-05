@@ -1,8 +1,18 @@
-![Ray Cover Image](src/ray-cover.png)
+![Ray Cover Image](images/ray-cover.png)
+![Ray Linux Cover Image](images/ray-linux.png)
 
 ## Welcome
 
 Welcome to Ray. A C++ program that can do Raytracing in the console. This is pure bit-beauty.
+
+## Building
+
+```bash
+    mkdir build
+    cd build
+    cmake ..
+    cmake --build .
+```
 
 ## License
 
