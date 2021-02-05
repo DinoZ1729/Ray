@@ -186,7 +186,7 @@ int main() {
 
   while (1) {
     //starting time
-		time_start = std::chrono::high_resolution_clock::now();
+    time_start = std::chrono::high_resolution_clock::now();
 
     camera cam(r, alfa, beta);
 
@@ -224,8 +224,8 @@ int main() {
     if (beta > PI / 200)
       beta -= 0.00075 * PI;
 
-		//calculating the time passed to update the frame
-		time_end = std::chrono::high_resolution_clock::now();
+    //calculating the time passed to update the frame
+    time_end = std::chrono::high_resolution_clock::now();
     lag = std::chrono::duration_cast<std::chrono::nanoseconds>(time_start - time_end);
 
     //sleeping for the remaning time to get a constant refresh rate
