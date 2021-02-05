@@ -1,6 +1,5 @@
 #pragma once
 //declaration
-#include "functions.h"
 
 void transformVector(double vec[3],const double m[16]);
 void invert(double inv[16],const double matrix[16]);
