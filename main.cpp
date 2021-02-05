@@ -3,6 +3,7 @@
 #endif
 #include <cstring>
 #include <iostream>
+#include <chrono>
 
 //#include <unistd.h>
 #include "functions.cpp"
@@ -138,6 +139,9 @@ public:
   }
 };
 
+//using a fixed timestep of 1/60(fps) for each frame
+constexpr std::chrono::nanoseconds timestep(16ms);	
+
 int main() {
   // ball declaration::
   ball balls[3];
@@ -175,7 +179,13 @@ int main() {
   
   char platno[HEIGHT / dH * (WIDTH / dW + 1) + 1];
 
+  std::chrono::_V2::system_clock::time_point time_start;
+	std::chrono::_V2::system_clock::time_point time_end;
+
   while (1) {
+    //starting time
+		time_start = std::chrono::high_resolution_clock::now();
+
     camera cam(r, alfa, beta);
 
     int p = 0;
@@ -215,6 +225,9 @@ int main() {
     alfa += 0.0003 * PI;
     if (beta > PI / 2000)
       beta -= 0.0003 * PI;
+
+		//calculating the time passed to update the frame
+		time_end = std::chrono::high_resolution_clock::now();
   }
   return 0;
 }
