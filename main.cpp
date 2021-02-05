@@ -220,9 +220,9 @@ int main() {
     gotoxy(0, 0);
     // update camera position
     // using very small angle increments to get a smoother transition
-    alfa += 0.0003 * PI;
+    alfa += 0.00075 * PI;
     if (beta > PI / 2000)
-      beta -= 0.0003 * PI;
+      beta -= 0.00075 * PI;
 
 		//calculating the time passed to update the frame
 		time_end = std::chrono::high_resolution_clock::now();
