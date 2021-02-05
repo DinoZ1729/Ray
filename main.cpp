@@ -172,8 +172,10 @@ int main() {
   getchar();
   gotoxy(0, 0);
 
+  
+  char platno[HEIGHT / dH * (WIDTH / dW + 1) + 1];
+
   while (1) {
-    char platno[HEIGHT / dH * (WIDTH / dW + 1) + 1];
     camera cam(r, alfa, beta);
 
     int p = 0;
