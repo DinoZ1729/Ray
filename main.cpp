@@ -4,6 +4,7 @@
 #include <cstring>
 #include <iostream>
 #include <chrono>
+#include <thread>
 
 //#include <unistd.h>
 #include "functions.cpp"
@@ -215,10 +216,6 @@ int main() {
     // puts is very fast
     puts(platno);
 
-    // sleeping to reduce frames count
-    // maybe there is a better way than sleeping to sync
-    Sleep(5);
-
     // instead of system("cls") i used this because it looks smoother
     gotoxy(0, 0);
     // update camera position
@@ -234,6 +231,7 @@ int main() {
     //sleeping for the remaning time to get a constant refresh rate
     if (lag < timestep) {
       auto sleep_duration = (timestep - lag);
+      std::this_thread::sleep_for(sleep_duration);
     }
   }
   return 0;
