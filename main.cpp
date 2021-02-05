@@ -221,7 +221,7 @@ int main() {
     // update camera position
     // using very small angle increments to get a smoother transition
     alfa += 0.00075 * PI;
-    if (beta > PI / 2000)
+    if (beta > PI / 200)
       beta -= 0.00075 * PI;
 
 		//calculating the time passed to update the frame
