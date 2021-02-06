@@ -1,4 +1,4 @@
-![Ray Cover Image](src/ray-cover.png)
+![Ray Cover Image](ray-cover.png)
 
 ## Welcome
 
