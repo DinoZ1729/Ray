@@ -2,13 +2,13 @@
 #define RAY_FUNCTIONS_H
 #include <cmath>
 
-void transformVector(double vec[3],const double m[16]);
-void invert(double inv[16],const double matrix[16]);
-void cross(double r[3],double a[3],double b[3]);
-double magnitute(double r[3]);
-void normalize(double r[3]);
-void scale(double a[3],double k);
-double dot(double a[3], double b[3]);
-void vector(double a[3],double b[3],double c[3]);
-double clamp(double x,double min,double max);
+void transformVector(double [],const double []);
+void invert(double [],const double []);
+void cross(double [],double [],double []);
+double magnitute(double []);
+void normalize(double []);
+void scale(double [],double);
+double dot(double [], double []);
+void vector(double [],double [],double []);
+double clamp(double ,double,double);
 #endif
