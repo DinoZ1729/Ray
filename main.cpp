@@ -5,7 +5,7 @@
 #include <iostream>
 
 //#include <unistd.h>
-#include "functions.cpp"
+#include "functions.h"
 #define PI 3.14159265358979323846
 using namespace std;
 

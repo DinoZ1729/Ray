@@ -1,4 +1,3 @@
-#include <cmath>
 #include "functions.h"
 
 void transformVector(double vec[3],const double m[16])
