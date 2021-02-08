@@ -209,10 +209,10 @@ int main() {
     // maybe there is a better way than sleeping to sync
     #ifdef _WIN32
     Sleep(5);
-    #endif
-    
+    #else
     //Linux alternative
     usleep(5);
+    #endif
 
     // instead of system("cls") i used this because it looks smoother
     gotoxy(0, 0);
