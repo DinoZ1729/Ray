@@ -8,8 +8,7 @@ Welcome to Ray. A C++ program that can do Raytracing in the console. This is pur
 
 In order to compile and run on a Linux/GNU distro, you will need to run the following commands:
 
-* $ **g++ -c main.cpp -lm**
-* $ **g++ main.o**
+* $ **g++ *.cpp -lm**
 * $ **./a.out**
 
 ## License
