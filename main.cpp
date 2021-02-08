@@ -1,10 +1,12 @@
 #ifdef _WIN32
 #include <windows.h>
+#else
+#include <unistd.h>
 #endif
+
 #include <cstring>
 #include <iostream>
 
-//#include <unistd.h>
 #include "functions.cpp"
 #define PI 3.14159265358979323846
 using namespace std;
@@ -204,7 +206,12 @@ int main() {
 
     // sleeping to reduce frames count
     // maybe there is a better way than sleeping to sync
+    #ifdef _WIN32
     Sleep(5);
+    #endif
+    
+    //Linux alternative
+    usleep(5);
 
     // instead of system("cls") i used this because it looks smoother
     gotoxy(0, 0);
