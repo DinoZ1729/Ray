@@ -1,5 +1,5 @@
-#include <cmath>
 #include "functions.h"
+#include <cmath>
 
 void transformVector(double vec[3],const double m[16])
 {
