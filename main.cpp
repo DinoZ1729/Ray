@@ -141,7 +141,7 @@ public:
 };
 
 //using a fixed timestep of 1/60(fps) for each frame
-constexpr std::chrono::nanoseconds timestep(16ms);	
+constexpr std::chrono::nanoseconds timestep(17ms);	
 
 int main() {
   // ball declaration::
