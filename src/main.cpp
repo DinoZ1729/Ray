@@ -1,11 +1,23 @@
 #ifdef _WIN32
 #include <windows.h>
+#else
+#include <unistd.h>
 #endif
+
+void CrossSleep(int ms) //crossplatform sleep
+{ 
+    #ifdef _WIN32
+    Sleep(ms);
+    #else
+    usleep(ms);
+    #endif  
+}
+
 #include <cstring>
 #include <iostream>
+#include <cmath>
 
-//#include <unistd.h>
-#include "functions.cpp"
+#include "functions.h"
 #define PI 3.14159265358979323846
 using namespace std;
 
@@ -204,8 +216,7 @@ int main() {
 
     // sleeping to reduce frames count
     // maybe there is a better way than sleeping to sync
-    Sleep(5);
-
+    CrossSleep(5);
     // instead of system("cls") i used this because it looks smoother
     gotoxy(0, 0);
     // update camera position
