@@ -26,6 +26,9 @@ using namespace std;
 #define WIDTH 800
 #define HEIGHT 600
 
+//target FPS: 59
+#define TICKDELAY 17
+
 // width and height of each character in pixels
 const int dW = 4, dH = 8;
 
@@ -94,11 +97,13 @@ public:
     for (int i = 0; i < n; i++) {
       double diff[3];
       vector(diff, origin, balls[i].center);
-      double discriminant = dot(unit, diff) * dot(unit, diff) +
-                            balls[i].radius * balls[i].radius - dot(diff, diff);
+      double discriminant = dot(unit, diff);
+      distance = -discriminant;
+      discriminant = discriminant * discriminant +
+                     balls[i].radius * balls[i].radius - dot(diff, diff);
       if (discriminant < 0)
         continue;
-      distance = -dot(unit, diff) - sqrt(discriminant);
+      distance -= sqrt(discriminant);
       if (distance <= 0)
         continue;
       index = i;
@@ -111,27 +116,31 @@ public:
       {
         double tx = origin[0] + distanceToPlane * unit[0],
                ty = origin[1] + distanceToPlane * unit[1];
-        double color = clamp(1 / (1 + distanceToPlane / 10), 0, 1);
-        double origin2[3] = {origin[0] + distanceToPlane * unit[0],
-                             origin[1] + distanceToPlane * unit[1],
-                             origin[2] + distanceToPlane * unit[2]};
-        double unit2[3] = {unit[0], unit[1], -unit[2]};
-        if ((int)(floor(tx) + floor(ty)) % 2 == 0)
+        if ((int)(floor(tx) + floor(ty)) % 2 == 0) {
+          double color = clamp(1 / (1 + distanceToPlane / 10), 0, 1);
+          double origin2[3] = {origin[0] + distanceToPlane * unit[0],
+                               origin[1] + distanceToPlane * unit[1],
+                               origin[2] + distanceToPlane * unit[2]};
+          double unit2[3] = {unit[0], unit[1], -unit[2]};
           return (1 - coeff) * color + coeff * rayTrace(origin2, unit2, balls,
                                                         n, altitute, coeff,
                                                         limit - 1);
+        }
         else
           return 0;
       }
     }
-
+    /*
     if (unit[2] < 0 && distance > distanceToPlane) // ray hit the groung
     {
       double tx = origin[0] + distanceToPlane * unit[0],
              ty = origin[1] + distanceToPlane * unit[1];
       return (double)((int)(floor(tx) + floor(ty)) % 2);
     }
+    */
     // ray hit a ball
+    if (limit == 0)
+      return balls[index].color;
     double origin2[3] = {origin[0] + unit[0] * distance,
                          origin[1] + unit[1] * distance,
                          origin[2] + unit[2] * distance};
@@ -142,14 +151,11 @@ public:
     scale(normal, k);
     double unit2[3];
     vector(unit2, unit, normal);
-    if (limit == 0)
-      return balls[index].color;
     return (1 - balls[index].coeff) * balls[index].color +
            balls[index].coeff *
                rayTrace(origin2, unit2, balls, n, altitute, coeff, limit - 1);
   }
 };
-
 int main() {
   // ball declaration::
   ball balls[3];
@@ -184,6 +190,8 @@ int main() {
   getchar();
   gotoxy(0, 0);
 
+  clock_t ticks = clock();
+
   while (1) {
     char platno[HEIGHT / dH * (WIDTH / dW + 1) + 1];
     camera cam(r, alfa, beta);
@@ -214,9 +222,10 @@ int main() {
     // puts is very fast
     puts(platno);
 
-    // sleeping to reduce frames count
-    // maybe there is a better way than sleeping to sync
-    CrossSleep(5);
+    // wait for next draw
+    while (ticks + TICKDELAY - clock() > 0) { }
+    ticks = clock();
+
     // instead of system("cls") i used this because it looks smoother
     gotoxy(0, 0);
     // update camera position
