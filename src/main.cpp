@@ -1,11 +1,23 @@
 #ifdef _WIN32
 #include <windows.h>
+#else
+#include <unistd.h>
 #endif
+
+void CrossSleep(int ms) //crossplatform sleep
+{ 
+    #ifdef _WIN32
+    Sleep(ms);
+    #else
+    usleep(ms);
+    #endif  
+}
+
 #include <cstring>
 #include <iostream>
+#include <cmath>
 
-//#include <unistd.h>
-#include "functions.cpp"
+#include "functions.h"
 #define PI 3.14159265358979323846
 using namespace std;
 
