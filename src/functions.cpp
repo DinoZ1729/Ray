@@ -136,13 +136,6 @@ void invert(double inv[16],const double matrix[16])
         inv[i] *= det;
 }
 
-void cross(double r[3],double a[3],double b[3])
-{
-	r[0]=a[1]*b[2]-a[2]*b[1];
-	r[1]=a[2]*b[0]-a[0]*b[2];
-	r[2]=a[0]*b[1]-a[1]*b[0];
-}
-
 double magnitute(double r[3])
 {
 	return sqrt(r[0]*r[0]+r[1]*r[1]+r[2]*r[2]);
@@ -171,13 +164,4 @@ void vector(double a[3],double b[3],double c[3])
 	a[0]=b[0]-c[0];
 	a[1]=b[1]-c[1];
 	a[2]=b[2]-c[2];
-}
-
-double clamp(double x,double min,double max)
-{
-    if (x < min)
-        x = min;
-    else if (x > max)
-        x = max;
-    return x;
 }
