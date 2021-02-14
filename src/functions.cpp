@@ -165,12 +165,3 @@ void vector(double a[3],double b[3],double c[3])
 	a[1]=b[1]-c[1];
 	a[2]=b[2]-c[2];
 }
-
-double clamp(double x,double min,double max)
-{
-    if (x < min)
-        x = min;
-    else if (x > max)
-        x = max;
-    return x;
-}

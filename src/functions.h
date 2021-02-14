@@ -8,4 +8,3 @@ void normalize(double r[3]);
 void scale(double a[3],double k);
 double dot(double a[3], double b[3]);
 void vector(double a[3],double b[3],double c[3]);
-double clamp(double x,double min,double max);

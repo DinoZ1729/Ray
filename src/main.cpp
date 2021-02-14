@@ -13,6 +13,7 @@ void CrossSleep(int ms) //crossplatform sleep
     #endif  
 }
 
+#include <algorithm>
 #include <cstring>
 #include <iostream>
 #include <cmath>
@@ -111,7 +112,7 @@ public:
       {
         double tx = origin[0] + distanceToPlane * unit[0],
                ty = origin[1] + distanceToPlane * unit[1];
-        double color = clamp(1 / (1 + distanceToPlane / 10), 0, 1);
+        double color = clamp(1 / (1 + distanceToPlane / 10), 0.0, 1.0);
         double origin2[3] = {origin[0] + distanceToPlane * unit[0],
                              origin[1] + distanceToPlane * unit[1],
                              origin[2] + distanceToPlane * unit[2]};
