@@ -4,4 +4,5 @@ project (raytracer VERSION 1.0)
 include_directories(src)
 
 add_executable(raytracer src/main.cpp
-                         src/functions.cpp)   
+                         src/functions.cpp
+                         src/camera.cpp)
