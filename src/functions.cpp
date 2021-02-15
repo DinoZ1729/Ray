@@ -1,15 +1,5 @@
 #include "functions.h"
 
-void transformVector(double vec[3],const double m[16])
-{
-    double  tx=vec[0]*m[0]+vec[1]*m[4]+vec[2]*m[8]+m[12],
-            ty=vec[0]*m[1]+vec[1]*m[5]+vec[2]*m[9]+m[13],
-            tz=vec[0]*m[2]+vec[1]*m[6]+vec[2]*m[10]+m[14];
-    vec[0]=tx;
-    vec[1]=ty;
-    vec[2]=tz;
-}
-
 void invert(double inv[16],const double matrix[16])
 {
     double det;
@@ -132,35 +122,7 @@ void invert(double inv[16],const double matrix[16])
     det = 1.0 / det;
 
     for (i = 0; i < 16; i++)
+    {
         inv[i] *= det;
-}
-
-double magnitute(double r[3])
-{
-    return sqrt(r[0]*r[0]+r[1]*r[1]+r[2]*r[2]);
-}
-
-void normalize(double r[3])
-{
-    double len=magnitute(r);
-    r[0]/=len;
-    r[1]/=len;
-    r[2]/=len;
-}
-void scale(double a[3],double k)
-{
-    a[0]*=k;
-    a[1]*=k;
-    a[2]*=k;
-}
-double dot(double a[3], double b[3])
-{
-    return a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
-}
-
-void vector(double a[3],double b[3],double c[3])
-{
-    a[0]=b[0]-c[0];
-    a[1]=b[1]-c[1];
-    a[2]=b[2]-c[2];
+    }
 }

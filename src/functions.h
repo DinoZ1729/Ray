@@ -1,20 +1,24 @@
-#pragma once
-//declaration
+#ifndef __FUNCTIONS_H__
+#define __FUNCTIONS_H__
 
-#include <cmath>
+/* Includes */
 
-typedef struct Ball {
-    double center[3];
+#include "vector.h"
+
+
+/* Defines */
+
+typedef struct Ball
+{
+    Vector center;
     double radius;
-    double color; // on the interval from 0 (dark) to 1 (light)
-    double coeff; // on the scale from 0 to 1 how much does the ball reflect light
-                  // (1 means it's the perfect mirror)
+    double color;   /* Interval between 0 (dark) to 1 (light) */
+    double coeff;   /* Interval between 0 and 1 how much the ball reflect light (1 means it's the perfect mirror) */
 } ball;
 
-void transformVector(double vec[3],const double m[16]);
+
+/* Functions */
+
 void invert(double inv[16],const double matrix[16]);
-double magnitute(double r[3]);
-void normalize(double r[3]);
-void scale(double a[3],double k);
-double dot(double a[3], double b[3]);
-void vector(double a[3],double b[3],double c[3]);
+
+#endif
