@@ -36,14 +36,14 @@ Camera::Camera(double r, double alfa, double beta)
     matrix[14] = z;
 
     /* invert */
-    invert(inv, matrix);
+    invertMatrix(inv, matrix);
 }
 
 Camera::~Camera()
 {
 }
 
-double Camera::rayTrace(Vector &origin, Vector &unit, ball balls[], int n, double altitute, double coeff, int limit)
+double Camera::rayTrace(Vector &origin, Vector &unit, Ball balls[], int n, double altitute, double coeff, int limit)
 {
     double color;
     double distanceToPlane = -(origin.getZ() + altitute) / unit.getZ(); /* this is signed distance */
