@@ -3,8 +3,9 @@
 
 /* Includes */
 
-#include "functions.h"
+#include "matrix_operations.h"
 #include "vector.h"
+#include "ball.h"
 
 #include <algorithm>
 #include <cmath>
@@ -18,7 +19,7 @@ public:
     Camera(double r, double alfa, double beta);
     ~Camera();
 
-    double rayTrace(Vector &origin, Vector &unit, ball balls[], int n, double altitute, double coeff, int limit);
+    double rayTrace(Vector &origin, Vector &unit, Ball balls[], int n, double altitute, double coeff, int limit);
 
     double x, y, z;
     double matrix[16], inv[16];

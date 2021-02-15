@@ -2,7 +2,8 @@
 
 #include "vector.h"
 #include "Camera.h"
-#include "functions.h"
+#include "matrix_operations.h"
+#include "ball.h"
 
 #ifdef _WIN32
 #include <windows.h>
@@ -50,7 +51,7 @@ void gotoxy(short x, short y) {
 int main(void)
 {
     /* ball declaration */
-    ball balls[3];
+    Ball balls[3];
     balls[0].center.set(0, 0, 0);
     balls[0].radius = 1;
     balls[0].color = 1;

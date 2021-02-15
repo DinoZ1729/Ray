@@ -1,6 +1,6 @@
-#include "functions.h"
+#include "matrix_operations.h"
 
-void invert(double inv[16],const double matrix[16])
+void invertMatrix(double inv[16],const double matrix[16])
 {
     double det;
     int i;
