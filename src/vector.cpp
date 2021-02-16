@@ -1,14 +1,7 @@
 #include "vector.h"
 
-Vector::Vector() : _x(0.0f), _y(0.0f), _z(0.0f)
-{
-}
 
-Vector::Vector(double x, double y, double z) : _x(x), _y(y), _z(z)
-{
-}
-
-Vector::~Vector()
+Vector::Vector(const double x,const double y,const double z) : _x(x), _y(y), _z(z)
 {
 }
 
@@ -56,7 +49,7 @@ Vector Vector::transformMatrixToVector(const double m[16])
     return ret;
 }
 
-void Vector::set(double x, double y, double z)
+void Vector::set(const double x, const double y, const double z)
 {
     _x = x;
     _y = y;

@@ -8,7 +8,7 @@
 
 /* Defines */
 
-typedef struct Ball
+struct Ball
 {
     Vector center;
     double radius;
