@@ -1,9 +1,12 @@
 /* Includes */
 
 #include "vector.h"
-#include "Camera.h"
+#include "camera.h"
 #include "matrix_operations.h"
 #include "ball.h"
+
+#include <cstdio>
+#include <cstring>
 
 #ifdef _WIN32
 #include <windows.h>
