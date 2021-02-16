@@ -1,8 +1,14 @@
-cmake_minimum_required (VERSION 3.0)
-project (raytracer VERSION 1.0)
+cmake_minimum_required(VERSION 3.11)
 
-include_directories(src)
+project(raytracer
+  VERSION 1.0.0
+  LANGUAGES CXX)
 
-add_executable(raytracer src/main.cpp
-                         src/functions.cpp
-                         src/camera.cpp)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED YES)
+
+add_executable(raytracer src/main.cpp src/camera.cpp src/matrix_operations.cpp
+                         src/vector.cpp)
+
+target_include_directories(raytracer PUBLIC src)
+
