@@ -1,4 +1,8 @@
-![Ray Cover Image](src/ray-cover.png)
+![Ray Cover Image](images/ray-cover.png)
+![Ray Linux Cover Image](images/ray-linux.png)
+
+## Demo Video
+[![Demo Video](https://img.youtube.com/vi/QkETiyYWh2o/0.jpg)](https://www.youtube.com/watch?v=QkETiyYWh2o)
 
 ## Welcome
 
