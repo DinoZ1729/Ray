@@ -7,11 +7,11 @@
 
 #include <cstdio>
 #include <cstring>
+#include <chrono>
+#include <thread>
 
 #ifdef _WIN32
 #include <windows.h>
-#else
-#include <unistd.h>
 #endif
 
 
@@ -26,18 +26,10 @@ const char palette[] = " .:;~=#OB8%&";
 
 using namespace std;
 
+constexpr chrono::nanoseconds timestep(17ms);  /* Minimum Duration of each loop*/
+
 
 /* Functions */
-
-/* crossplatform sleep */
-void crossSleep(int ms)
-{
-#ifdef _WIN32
-    Sleep(ms);
-#else
-    usleep(ms);
-#endif
-}
 
 /* set cursor at start to avoid flickering (avoid clearing screen) */
 void gotoxy(short x, short y) {
@@ -84,9 +76,18 @@ int main(void)
     getchar();
     gotoxy(0, 0);
 
+    char platno[HEIGHT / C_HEIGHT * (WIDTH / C_WIDTH + 1) + 1];
+
+    /* time tracking variables */
+    chrono::nanoseconds lag(0ns);
+    chrono::system_clock::time_point time_start;
+    chrono::system_clock::time_point time_end;
+
     while (true)
     {
-        char platno[HEIGHT / C_HEIGHT * (WIDTH / C_WIDTH + 1) + 1];
+        /* main loop start time */
+        time_start = chrono::high_resolution_clock::now();
+        
         Camera cam(r, alfa, beta);
 
         int p = 0;
@@ -115,9 +116,6 @@ int main(void)
         /* puts function is very fast */
         puts(platno);
 
-        /* sleeping to reduce frames count, maybe there is a better way than sleeping to sync */
-        crossSleep(5);
-
         /* instead of system("cls") i used this because it looks smoother */
         gotoxy(0, 0);
 
@@ -126,6 +124,16 @@ int main(void)
         if (beta > PI / 2000)
         {
             beta -= 0.0003 * PI;
+        }
+
+        /* elapsed time of this loop */
+        time_end = chrono::high_resolution_clock::now();
+        lag = chrono::duration_cast<chrono::nanoseconds>(time_start - time_end);
+        
+        /* sleeping for the remaning duration to get a constant refreh rate */
+        if (lag < timestep) {
+            auto sleep_duration = (timestep - lag);
+            this_thread::sleep_for(sleep_duration);
         }
     }
     return 0;
