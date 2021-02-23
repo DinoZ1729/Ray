@@ -11,9 +11,8 @@
 class Vector
 {
 public:
-    Vector();
-    Vector(double x, double y, double z);
-    ~Vector();
+    Vector() = default;
+    Vector(const double x, const double y, const double z);
 
     /* Operators */
     friend Vector operator + (const Vector &v1, const Vector &v2);
@@ -26,20 +25,20 @@ public:
 
     Vector transformMatrixToVector(const double m[16]);
 
-    double getX() { return _x; }
-    double getY() { return _y; }
-    double getZ() { return _z; }
+    double getX() const { return _x; }
+    double getY() const { return _y; }
+    double getZ() const { return _z; }
 
-    double setX(double x) { _x = x; }
-    double setY(double y) { _y = y; }
-    double setZ(double z) { _z = z; }
+    void setX(const double x) { _x = x; }
+    void setY(const double y) { _y = y; }
+    void setZ(const double z) { _z = z; }
 
-    void set(double x, double y, double z);
+    void set(const double x, const double y, const double z);
 
 private:
-    double _x;
-    double _y;
-    double _z;
+    double _x{};
+    double _y{};
+    double _z{};
 };
 
 #endif
