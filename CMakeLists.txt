@@ -7,8 +7,8 @@ project(raytracer
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 
-add_executable(raytracer src/main.cpp src/camera.cpp src/matrix_operations.cpp
-                         src/vector.cpp)
+file(GLOB files_cpp "src/*.cpp")
+add_executable(raytracer ${files_cpp})
 
 target_include_directories(raytracer PUBLIC src)
 
