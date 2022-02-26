@@ -80,8 +80,8 @@ int main(void)
 
     /* time tracking variables */
     chrono::nanoseconds lag(0ns);
-    chrono::system_clock::time_point time_start;
-    chrono::system_clock::time_point time_end;
+    chrono::high_resolution_clock::time_point time_start;
+    chrono::high_resolution_clock::time_point time_end;
 
     while (true)
     {
